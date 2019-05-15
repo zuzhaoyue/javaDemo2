@@ -13,7 +13,9 @@ public class ProxyTest {
                                           handler);*/
         PersonDao realPersonDao = new PersonDaoImpl();
         MyInvocationHandler myInvocationHandler = new MyInvocationHandler(realPersonDao);
-        PersonDao proxy = (PersonDao) Proxy.newProxyInstance(realPersonDao.getClass().getClassLoader(),realPersonDao.getClass().getInterfaces(),myInvocationHandler);
+        PersonDao proxy = (PersonDao) Proxy.newProxyInstance(
+                realPersonDao.getClass().getClassLoader(),realPersonDao.getClass().getInterfaces(),myInvocationHandler);
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles","true");
         proxy.say();
 
     }

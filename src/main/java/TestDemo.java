@@ -1,9 +1,10 @@
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.JsonNode;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.ref.PhantomReference;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.HashSet;
@@ -16,7 +17,8 @@ public class TestDemo {
     public static void main(String args[]) throws IOException {
 //        testTreeSet();
 //        test();
-        test2();
+//        test2();
+        test3();
     }
     public static  void  testTreeSet() throws IOException {
 //        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
@@ -57,6 +59,17 @@ public class TestDemo {
         DecimalFormat df = new DecimalFormat("0.00");
         String a = df.format(0.26);
         System.out.println(a);
+
+    }
+    public static void test3(){
+        String a = "aa";
+        PhantomReference r = new PhantomReference(a,null);
+//        System.gc();
+        if(r.get() == null){
+            System.out.println("获取不到");
+        }else{
+            System.out.println("怎么肥事");
+        }
 
     }
 }
